@@ -26,7 +26,6 @@ const ContractCall = () => {
                         .send({
                             value: nd,
                             from: account,
-                            
                         })
                 } else {
                     console.log('account is not defined');

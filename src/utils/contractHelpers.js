@@ -1,5 +1,6 @@
 import contractABI from './contractABI.json';
 import approveABI from './approveABI.json';
+import stakeABI from './stakeABI.json';
 import getRpcUrl from './getRpcUrl';
 import web3NoAccount from "./web3";
 
@@ -22,4 +23,8 @@ export const contractInstance = (contractAddress, web3) => {
 
 export const approvecontractInstance = (contractAddress, web3) => {
     return getContract(approveABI, contractAddress, web3);
+};
+
+export const stakecontractInstance = (contractAddress, web3) => {
+    return getContract(stakeABI, contractAddress, web3);
 };

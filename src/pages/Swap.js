@@ -4,6 +4,7 @@ import './swap.scss';
 import Spinner from 'react-bootstrap/Spinner';
 import ApproveTokenCall from '../utils/approveTokenCall';
 import TokenToCoinCall from '../utils/tokenToCoinCall';
+import { toast } from 'react-toastify';
 
 const Swap = () => {
 
@@ -21,13 +22,18 @@ const Swap = () => {
         console.log('call in swap comp');
         if (ethAM == 0 || ethAM == null) {
             console.log('okokokokokkk');
-            setETHAm('Pleas enter amount of ETH')
+            toast.error("Pleas enter amount of ETH");
+            // toast.success("Pleas enter amount of ETH");
+            // setETHAm('Pleas enter amount of ETH');
             return
         }
-        setloader(true);
         try {
+            setloader(true);
             let aaaaaa = await swapcall(ethAM);
             console.log(aaaaaa, '/aaaaaa');
+            if (aaaaaa?.status == true) {
+                setloader(false);
+            }
         } catch (error) {
             console.log('error in call in swap');
         }
@@ -35,6 +41,7 @@ const Swap = () => {
 
 
     const { approveToken } = ApproveTokenCall();
+    
     const hydtToEthCall = async () => {
         try {
             let bbbb = await approveToken();
@@ -73,18 +80,18 @@ const Swap = () => {
                     }
                 </div>
                 <p>Got HYDT</p>
-                {
-                    loader ?
-                        // <Spinner animation="border" role="status">
-                        // </Spinner>
-                        // <div class="spinner-border text-light" role="status">
-                        //     <span class="visually-hidden">Loading...</span>
-                        // </div>
-                        <div class="spinner-border text-light" role="status">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        : null
-                }
+                <div className='lodaer-wrapper'>
+                    {
+                        loader ?
+                            // <Spinner animation="border" role="status">
+                            // </Spinner>
+                            // <div class="spinner-border text-light" role="status">
+                            //     <span class="visually-hidden">Loading...</span>
+                            // </div>
+                            <span class="loader"></span>
+                            : null
+                    }
+                </div>
                 <button onClick={() => submitCall()}>Swap</button>
             </div>
 

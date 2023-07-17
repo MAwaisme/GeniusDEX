@@ -46,7 +46,7 @@ const Header = () => {
       <div className='header-links'>
         <div className='header-linkssss'>
           <Link to={'/'}>Home</Link>
-          <Link to={'/'}>Staking</Link>
+          <Link to={'/stake'}>Staking</Link>
           <Link to={'/swap'}>Swap</Link>
           <Link to={'/'}>Account</Link>
         </div>
