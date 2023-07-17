@@ -17,9 +17,20 @@ const Staking = () => {
     console.log(claimA, 'claim amount');
     console.log(withdrawA, 'withdrawA');
 
+    const [errorI, setErrorI] = useState(null);
+
+    const myArray = [stakeT];
+    const searchString = '.';
+    const includesElement = myArray.includes(searchString);
+
     const { stakeContract } = StakeContractCall();
     const { claimContract } = ClaimContract();
     const { withdrawContract } = WithdrawContractCall();
+
+    // const inputHandle = () => {
+    //     includesElement === stakeT ?
+    //     setErrorI(): 
+    // }
 
     const stakeHandle = async () => {
         console.log('start stake in compt');
@@ -40,18 +51,22 @@ const Staking = () => {
 
     const claimHandle = async () => {
         console.log('start claiming.......');
-        try {
-            setloader1(true);
-            console.log('start stake in compt contracr');
-            let claimfuncall = await claimContract();
-            console.log(claimfuncall, 'claimfuncall');
-            if (claimfuncall?.status == true) {
-                setClaimA(claimfuncall);
-                setloader2(false);
+        if (includesElement) {
+            return 
+        } else {
+            try {
+                setloader1(true);
+                console.log('start stake in compt contracr');
+                let claimfuncall = await claimContract();
+                console.log(claimfuncall, 'claimfuncall');
+                if (claimfuncall?.status == true) {
+                    setClaimA(claimfuncall);
+                    setloader2(false);
+                }
+                toast.success("Claim Successfully");
+            } catch (error) {
+                console.log(error, 'error in comp calll.... Claim');
             }
-            toast.success("Claim Successfully");
-        } catch (error) {
-            console.log(error, 'error in comp calll.... Claim');
         }
     }
 
@@ -79,6 +94,11 @@ const Staking = () => {
                 <div className='input-wrapper-box'>
                     <h3>Stke STK</h3>
                     <input value={stakeT} placeholder='Enter amount of STK' onChange={(e) => setStake(e?.target?.value)} />
+                    {
+                        includesElement ?
+                            <p style={{ color: 'red' }}>you can't enter dubble DOT</p>
+                            : null
+                    }
                 </div>
                 <p>Reward RTK</p>
                 {
