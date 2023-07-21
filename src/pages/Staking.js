@@ -17,8 +17,6 @@ const Staking = () => {
     console.log(claimA, 'claim amount');
     console.log(withdrawA, 'withdrawA');
 
-    const [errorI, setErrorI] = useState(null);
-
     const myArray = [stakeT];
     const searchString = '.';
     const includesElement = myArray.includes(searchString);
@@ -42,17 +40,22 @@ const Staking = () => {
             if (stakefuncall?.status == true) {
                 setloader(false);
                 setStake("");
+                toast.success("Stake Successfully");
+            } else {
+                toast?.error('error');
+                setloader(false);
+                setStake("");
             }
-            toast.success("Stake Successfully");
         } catch (error) {
             console.log(error, 'error in comp calll.... Stake');
+            toast?.error(error);
         }
     }
 
     const claimHandle = async () => {
         console.log('start claiming.......');
         if (includesElement) {
-            return 
+            return
         } else {
             try {
                 setloader1(true);
@@ -62,8 +65,11 @@ const Staking = () => {
                 if (claimfuncall?.status == true) {
                     setClaimA(claimfuncall);
                     setloader2(false);
+                    toast.success("Claim Successfully");
+                } else {
+                    toast?.error('error');
+                    setloader2(false);
                 }
-                toast.success("Claim Successfully");
             } catch (error) {
                 console.log(error, 'error in comp calll.... Claim');
             }
@@ -80,8 +86,11 @@ const Staking = () => {
             if (withdrawfuncall?.status == true) {
                 setloader2(false);
                 setWithdrawA("");
+                toast.success("Withdraw Successfully");
+            } else {
+                toast?.error('error');
+                setloader2(false);
             }
-            toast.success("Withdraw Successfully");
         } catch (error) {
             console.log(error, 'error in comp calll.... Withdraw');
         }
