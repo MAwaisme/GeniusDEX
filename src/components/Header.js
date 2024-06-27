@@ -273,28 +273,17 @@ const Header = () => {
           <Link to={'/'}>Home</Link>
           <Link to={'/stake'}>Staking</Link>
           <Link to={'/swap'}>Swap</Link>
-          <Link to={'/'}>Account</Link>
+          <Link to={'/presale'}>Pre-sale</Link>
         </div>
         <div className='header-buttons'>
-          {/* <Link to={'/login'}>
-            Login
-          </Link>
-          <Link to={'/sigin'}>
-            Sign up
-          </Link> */}
-          {/* <ConnectButton /> */}
           {
             account ?
               <>
-                {/* {account} */}
                 <button onClick={() => disConnect()}>Disconnect</button>
               </>
               :
               <button onClick={() => connectMetaMask1()}>Connect metamskt</button>
           }
-
-          {/* <button onClick={trustWallet}>WalletConnect</button> */}
-
         </div>
       </div>
     </div>

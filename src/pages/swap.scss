@@ -41,6 +41,16 @@ button {
     cursor: pointer;
 }
 
+.input-wrapper-box222 {
+    flex-direction: column !important;
+    gap: 20px;
+
+    input {
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
 .input-wrapper-box {
     border-radius: 10px;
     border: 1px solid #161516;

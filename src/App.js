@@ -11,6 +11,7 @@ import Swap from './pages/Swap';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Staking from './pages/Staking';
+import PreSale from './pages/PreSale';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/swap" component={Swap} />
           <Route exact path="/stake" component={Staking} />
+          <Route exact path="/presale" component={PreSale} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/sigin" component={Signup} />
         </Switch>
